@@ -1,0 +1,16 @@
+{
+	"name": "wahlu",
+	"owner": {
+		"name": "Wahlu",
+		"email": "hello@wahlu.com"
+	},
+	"description": "Wahlu's plugin for Claude: social media scheduling for you and your AI agent.",
+	"plugins": [
+		{
+			"name": "wahlu",
+			"source": "./plugins/wahlu",
+			"description": "Plan, draft and schedule social posts to Instagram, Facebook, TikTok, YouTube and LinkedIn from Claude, held for your review by default.",
+			"version": "0.1.0"
+		}
+	]
+}
