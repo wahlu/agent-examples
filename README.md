@@ -55,7 +55,7 @@ See [prompts](prompts/README.md) for first-connection checks, planning a week, a
 
 | Area | Tools |
 |---|---|
-| Discovery | `get_plans`, `get_context`, `get_brand_context`, `list_labels`, `list_targets`, `get_platform_capabilities`, `refresh_target_dynamic_options` |
+| Discovery | `get_context`, `get_brand_context`, `list_labels`, `list_targets`, `get_platform_capabilities`, `refresh_target_dynamic_options` |
 | Media | `list_media`, `get_media`, `import_media_from_url`, `upload_media`, `create_media_repair_derivative`, `upload_media_from_file` (local server only) |
 | Content | `list_content_items`, `get_content_item`, `list_drafts`, `create_draft`, `update_draft`, `delete_draft`, `update_draft_tiktok_privacy`, `preflight_draft` |
 | Schedules | `list_schedules`, `get_schedule`, `create_schedule`, `reschedule_schedule`, `cancel_schedule`, `approve_schedule`, `move_schedule_to_draft`, `delete_schedule`, `get_publish_run_receipt`, `cleanup_provider_publications`, `list_history` |

@@ -27,4 +27,4 @@ Use the Wahlu MCP tools to propose seven days of posts that fit the brand's conn
 - If a tool returns an authorisation or permission error, ask the person to reconnect Wahlu and check the brands and permissions they chose.
 - Wahlu publishes to Instagram, Facebook, TikTok, YouTube and LinkedIn personal profiles. Don't plan posts for other networks in Wahlu.
 - Facebook targets are Pages. Read current format and multi-photo limits from `get_platform_capabilities` and use only connected accounts marked schedulable.
-- Use `get_plans` for current plan limits when needed. Planning in conversation does not create a paid Autopilot plan or change the workspace's subscription.
+- Explain an entitlement refusal neutrally. Do not show subscription catalogues, prices, upgrade links or checkout. Planning in conversation does not create an Autopilot plan or change billing.

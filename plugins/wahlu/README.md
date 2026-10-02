@@ -17,18 +17,18 @@ The package includes the hosted HTTPS MCP configuration and both portable OpenAI
 
 ## Connect
 
-1. Create or use a Wahlu workspace with at least one brand. Agent access follows the current plan's limits, including Free; use current Wahlu plan information rather than assuming a paid subscription is always required.
+1. Create or use a Wahlu workspace with at least one brand. Agent access follows the current plan's limits, including eligible free accounts; do not assume a paid subscription is always required.
 2. Install the plugin in a supported host. For direct testing, add `https://mcp.wahlu.com/mcp` as a custom remote MCP connection. In Claude Code, use `/mcp` after plugin installation.
 3. Complete Wahlu OAuth in your browser. Choose the workspace, brands and permissions the assistant can use. Your password stays in the Wahlu login flow.
 4. Try: "Use Wahlu to show my brands, connected accounts and social content calendar."
 
 ## Available tools
 
-The hosted server has 37 tools. A host may retain an older imported tool list until the connection is refreshed. The local stdio server adds `upload_media_from_file`; that local-file tool is not part of this hosted directory package.
+The hosted server has 36 tools. A host may retain an older imported tool list until the connection is refreshed. Local stdio has 38 tools, with separate catalogue discovery and local-file upload; those two tools are not part of the hosted directory package.
 
 | Area | Hosted tools |
 |---|---|
-| Context and plans | `get_plans`, `get_context`, `get_brand_context`, `list_labels`, `list_targets`, `refresh_target_dynamic_options`, `get_platform_capabilities` |
+| Context | `get_context`, `get_brand_context`, `list_labels`, `list_targets`, `refresh_target_dynamic_options`, `get_platform_capabilities` |
 | Media | `import_media_from_url`, `list_media`, `get_media`, `create_media_repair_derivative`, `upload_media` |
 | Content | `create_draft`, `update_draft_tiktok_privacy`, `preflight_draft`, `list_content_items`, `get_content_item`, `list_drafts`, `update_draft`, `delete_draft` |
 | Calendar and outcomes | `create_schedule`, `list_schedules`, `get_schedule`, `get_publish_run_receipt`, `cleanup_provider_publications`, `reschedule_schedule`, `cancel_schedule`, `approve_schedule`, `move_schedule_to_draft`, `delete_schedule`, `list_history` |
@@ -52,3 +52,5 @@ History needs `publications:read`; notifications need `notifications:read`. Thes
 [MCP docs](https://wahlu.com/docs/mcp-server) · [Help](https://wahlu.com/help) · [Privacy](https://wahlu.com/privacy) · [Terms](https://wahlu.com/terms) · [hello@wahlu.com](mailto:hello@wahlu.com)
 
 MIT. See [LICENSE](LICENSE).
+
+Hosted directory tools exclude the public subscription catalogue under [OpenAI commerce policy](https://developers.openai.com/plugins/plugin-guidelines). Local stdio keeps its 38-tool inventory, including `get_plans` and `upload_media_from_file`; the generic SDK and CLI catalogue remain separate from directory use.

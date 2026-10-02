@@ -31,5 +31,5 @@ Take one idea from conversation to a Wahlu schedule. By default the schedule is 
 - Reuse the same `idempotency_key` when retrying the same request.
 - To move or cancel a schedule later, use `reschedule_schedule` or `cancel_schedule`, and only after the person asks.
 - A request to "queue" means a held schedule at an agreed time here. Queue configuration and automatic queue slots are managed in the Wahlu app; do not claim to add a post to a queue.
-- Use `get_plans` when plan limits prevent a request. Free and paid workspaces follow their current entitlements; do not promise a trial or upgrade based on old copy.
+- Explain plan or credit refusals using the returned feature and usage limits. Do not show subscription catalogues, prices, upgrade links or checkout, and do not promise access that the workspace lacks.
 - TikTok privacy must use live values from `refresh_target_dynamic_options` for the exact account; changing it on an existing draft uses `update_draft_tiktok_privacy`. Explain that the refresh can change stored connection state before requesting it.
