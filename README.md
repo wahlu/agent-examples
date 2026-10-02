@@ -2,7 +2,7 @@
 
 Wahlu is social media scheduling for you and your AI agent. Connect Claude, ChatGPT, Codex, Cursor, Gemini CLI or OpenClaw to Wahlu, and your agent can plan posts, prepare drafts, check they're ready and schedule them to **Instagram, Facebook, TikTok, YouTube and LinkedIn** personal profiles. Schedules are held for your review by default, so nothing publishes until you approve it.
 
-This repository holds the connect guides, example prompts, a Claude plugin with four skills and the OpenClaw skill. Everything here is Markdown and JSON; there's no code to build or run.
+This repository holds the connect guides, example prompts, a portable ChatGPT/Codex plugin with Claude compatibility and six skills, and the OpenClaw skill. Everything here is Markdown and JSON; there's no code to build or run.
 
 ## Connect
 
@@ -25,9 +25,9 @@ Guides for each client:
 
 Or give your agent [wahlu.com/connect.md](https://wahlu.com/connect.md). It's written for agents: it sets up what it can and tells you when it needs you.
 
-## Claude plugin
+## Wahlu plugin
 
-[`plugins/wahlu`](plugins/wahlu) bundles the Wahlu connector with four skills:
+[`plugins/wahlu`](plugins/wahlu) bundles the Wahlu connector with six skills:
 
 | Skill | What it does |
 |---|---|
@@ -35,6 +35,8 @@ Or give your agent [wahlu.com/connect.md](https://wahlu.com/connect.md). It's wr
 | `idea-to-scheduled-post` | Turns an idea, link or image into platform-ready copy, checks it and schedules it held for review |
 | `repurpose-video` | Adapts one video for Reels, TikTok, YouTube Shorts, Facebook and LinkedIn with a caption for each |
 | `weekly-recap` | Read-only summary of what went out, what needs attention and what's coming up |
+| `manage-posts` | Edits unused drafts and manages exact unsent schedules, with separate publishing approval |
+| `review-autopilot` | Reads a named plan's week and reviews one unused text idea without starting generation |
 
 Install it in Claude Code:
 
@@ -53,12 +55,13 @@ See [prompts](prompts/README.md) for first-connection checks, planning a week, a
 
 | Area | Tools |
 |---|---|
-| Discovery | `get_context`, `list_targets`, `get_platform_capabilities`, `refresh_target_dynamic_options` |
+| Discovery | `get_plans`, `get_context`, `get_brand_context`, `list_labels`, `list_targets`, `get_platform_capabilities`, `refresh_target_dynamic_options` |
 | Media | `list_media`, `get_media`, `import_media_from_url`, `upload_media`, `create_media_repair_derivative`, `upload_media_from_file` (local server only) |
-| Content | `list_content_items`, `get_content_item`, `create_draft`, `update_draft_tiktok_privacy`, `preflight_draft` |
-| Schedules | `list_schedules`, `get_schedule`, `create_schedule`, `reschedule_schedule`, `cancel_schedule`, `get_publish_run_receipt`, `cleanup_provider_publications` |
+| Content | `list_content_items`, `get_content_item`, `list_drafts`, `create_draft`, `update_draft`, `delete_draft`, `update_draft_tiktok_privacy`, `preflight_draft` |
+| Schedules | `list_schedules`, `get_schedule`, `create_schedule`, `reschedule_schedule`, `cancel_schedule`, `approve_schedule`, `move_schedule_to_draft`, `delete_schedule`, `get_publish_run_receipt`, `cleanup_provider_publications`, `list_history` |
+| Brand surfaces | `get_bio_page`, `get_bio_stats`, `get_autopilot_week`, `approve_autopilot_item`, `regenerate_autopilot_item`, `list_notifications` |
 
-Connecting social accounts, approving held schedules, general draft edits and queues stay in the [Wahlu app](https://app.wahlu.com).
+Connecting social accounts, queue configuration, Insights, reply automations, Link in bio editing, billing and account management stay in the [Wahlu app](https://app.wahlu.com). Final schedule approval from an agent requires Publishing permission and explicit approval. Existing draft editing is limited to unused draft names and captions. History and notifications require their separate OAuth scopes; the ordinary API-key selector does not offer those two scopes. See the [plugin README](plugins/wahlu/README.md) for current access limits.
 
 ## Safety
 

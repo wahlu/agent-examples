@@ -19,7 +19,7 @@ Take one video and prepare a version for each connected platform, with its own c
    - YouTube: a clear title plus a description.
    - LinkedIn: a professional angle and the takeaway.
    Show the set to the person and make their edits.
-6. **TikTok privacy.** For TikTok, call `refresh_target_dynamic_options` for that account right before choosing a privacy level. After the draft exists, set it with `update_draft_tiktok_privacy` using one of the returned values.
+6. **TikTok privacy.** For TikTok, explain that `refresh_target_dynamic_options` queries the account live and can update connection state, then obtain permission to refresh that exact account before choosing a privacy level. After the draft exists, set it with `update_draft_tiktok_privacy` using one of the returned values.
 7. **Save and check.** Call `create_draft` with each platform's settings and a stable `idempotency_key`, then `preflight_draft` for all chosen accounts and the planned time. Resolve blockers.
 8. **Schedule held for review.** Call `create_schedule` with `approval_status: "pending_review"`, then `get_schedule` once and report the result.
 
@@ -28,3 +28,4 @@ Take one video and prepare a version for each connected platform, with its own c
 - One video, one draft with per-platform settings, unless the person wants separate posts at different times.
 - Don't generate or alter the video itself beyond the repair options Wahlu offers.
 - Confirm before every write, and reuse `idempotency_key` values on retries.
+- This workflow reuses an existing video; it does not edit clips, generate media, run Studio or promise engagement analytics.

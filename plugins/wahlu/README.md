@@ -1,44 +1,54 @@
-# Wahlu for Claude
+# Wahlu for ChatGPT, Codex and Claude
 
-Wahlu is social media scheduling for you and your AI agent. This plugin connects Claude to your Wahlu account so Claude can plan posts, prepare drafts, check they're ready and schedule them to Instagram, Facebook, TikTok, YouTube and LinkedIn personal profiles. Schedules are held for your review by default: nothing publishes until you approve it in the Wahlu calendar, unless you clearly tell Claude otherwise and have granted the publishing permission.
+Plan, draft, review and schedule social posts through your Wahlu account. Use your brand's voice, existing media and connected Instagram, Facebook Pages, TikTok, YouTube and LinkedIn personal accounts. New schedules are held for review by default. Publishing requires a separate permission and your explicit approval.
 
-## What's included
+## Included workflows
 
-- **The Wahlu connector**: Wahlu's hosted MCP server at `https://mcp.wahlu.com/mcp`.
-- **Four skills:**
-  - `plan-a-week`: proposes a week of posts that fit your connected accounts and existing calendar, then saves the ones you approve as drafts.
-  - `idea-to-scheduled-post`: turns an idea, link or image into platform-ready copy, checks it and schedules it held for review.
-  - `repurpose-video`: adapts one video for Reels, TikTok, YouTube Shorts, Facebook and LinkedIn with a caption for each.
-  - `weekly-recap`: a read-only summary of what went out, what needs attention and what's coming up.
+| Skill | What it does |
+|---|---|
+| `plan-a-week` | Plans around your existing calendar and saves approved ideas as drafts |
+| `idea-to-scheduled-post` | Prepares captions, media and labels, checks readiness and creates a held schedule |
+| `repurpose-video` | Reuses one video across suitable connected platforms with their own settings |
+| `weekly-recap` | Reads calendar outcomes, available History links, Link in bio stats and upcoming posts |
+| `manage-posts` | Edits or deletes unused drafts and manages exact unsent schedules, including permitted approval |
+| `review-autopilot` | Reads a named plan's week and reviews, regenerates or approves one unused text idea |
 
-## Setup
+The package includes the hosted HTTPS MCP configuration and both portable OpenAI and Claude-compatible manifests. It runs no scripts, hooks or binaries on your computer. Public directory submission and publication are separate from this source package.
 
-1. You need a Wahlu account on a plan that includes agent access, with at least one brand and connected social accounts. Start at [wahlu.com](https://wahlu.com).
-2. Install the plugin, then connect Wahlu from the plugin's **Connectors** tab (claude.ai and Cowork) or with `/mcp` (Claude Code).
-3. Sign in to Wahlu in your browser, choose the workspace and brands Claude may use, and untick any permissions you don't want to grant.
-4. Try: "Use Wahlu to show which brands and accounts you can see."
+## Connect
 
-## What this plugin runs, sends and fetches
+1. Create or use a Wahlu workspace with at least one brand. Agent access follows the current plan's limits, including Free; use current Wahlu plan information rather than assuming a paid subscription is always required.
+2. Install the plugin in a supported host. For direct testing, add `https://mcp.wahlu.com/mcp` as a custom remote MCP connection. In Claude Code, use `/mcp` after plugin installation.
+3. Complete Wahlu OAuth in your browser. Choose the workspace, brands and permissions the assistant can use. Your password stays in the Wahlu login flow.
+4. Try: "Use Wahlu to show my brands, connected accounts and social content calendar."
 
-- **Runs:** nothing on your computer. The plugin contains only Markdown skills and a connector entry; there are no scripts, hooks or binaries.
-- **Connects to:** `https://mcp.wahlu.com/mcp`, operated by Wahlu. Sign-in happens on `auth.wahlu.com` with OAuth; Claude never sees your Wahlu password and you never paste an API key.
-- **Sends to Wahlu:** what the skills ask Claude to save, such as post copy, media URLs or media you share, draft settings, chosen accounts and schedule times, only for the brands and permissions you granted.
-- **Fetches from Wahlu:** your workspace and brand names; each brand's context (voice, audience, content pillars, custom AI instructions, brand kit colours, fonts and logo, and Link in bio page status) and labels; connected-account status, media, drafts, schedules and publishing results for those brands.
-- **Publishing:** posts go to your social accounts only through Wahlu's scheduling, and only for schedules that are approved. Approving directly from Claude needs the separate **Publish to social accounts** permission.
+## Available tools
 
-## Safety and control
+The hosted server has 37 tools. A host may retain an older imported tool list until the connection is refreshed. The local stdio server adds `upload_media_from_file`; that local-file tool is not part of this hosted directory package.
 
-- Every skill starts by reading and asks before it creates or changes anything.
-- You can revoke access at any time at [auth.wahlu.com/connections](https://auth.wahlu.com/connections). This doesn't disconnect your social accounts.
-- Wahlu's agent tools don't generate images, video or audio.
+| Area | Hosted tools |
+|---|---|
+| Context and plans | `get_plans`, `get_context`, `get_brand_context`, `list_labels`, `list_targets`, `refresh_target_dynamic_options`, `get_platform_capabilities` |
+| Media | `import_media_from_url`, `list_media`, `get_media`, `create_media_repair_derivative`, `upload_media` |
+| Content | `create_draft`, `update_draft_tiktok_privacy`, `preflight_draft`, `list_content_items`, `get_content_item`, `list_drafts`, `update_draft`, `delete_draft` |
+| Calendar and outcomes | `create_schedule`, `list_schedules`, `get_schedule`, `get_publish_run_receipt`, `cleanup_provider_publications`, `reschedule_schedule`, `cancel_schedule`, `approve_schedule`, `move_schedule_to_draft`, `delete_schedule`, `list_history` |
+| Brand surfaces | `get_bio_page`, `get_bio_stats`, `get_autopilot_week`, `approve_autopilot_item`, `regenerate_autopilot_item`, `list_notifications` |
+
+Read current platform media limits before creating multi-photo posts. Facebook multi-photo posts go to Pages; LinkedIn targets are personal profiles. Draft editing changes only an unused draft's name or caption. Autopilot review needs an existing plan ID; approving an idea does not start generation, and any later schedule remains held for final approval.
+
+History needs `publications:read`; notifications need `notifications:read`. These are additional OAuth scopes and are not newly available through the ordinary API-key selector. Existing grants may lack them. Explain unavailable access and use schedule receipts for outcomes where possible. Link in bio stats describe page visits and link clicks, not social engagement Insights.
+
+## Data, permissions and control
+
+- The assistant sends the content and selected records needed for the requested workflow: captions, media bytes or URLs, labels, account selections, draft settings and times. It reads only the granted workspace, brands and permissions.
+- Media uploads create private media; a URL import fetches the supplied public URL. Processing may continue after the call. A repair derivative preserves the source and requires an explicitly chosen repair option.
+- Unused draft and unsent schedule deletion require exact confirmation. Published social posts are not deleted by those tools. Provider cleanup needs separate exact receipt authority and permission.
+- Final schedule approval and rescheduling need `schedule:write` and `publish:execute` (Publishing). Approval requires an explicit decision about that post, accounts and time. New held schedules and cancellation need scheduling permission only. Permission refusals cannot be bypassed by creating an approved replacement.
+- Text-topic regeneration requires an eligible plan and may use AI credits. Wahlu's agent tools do not generate Studio images, videos or audio.
+- Revoke this connection at [Connected agents](https://auth.wahlu.com/connections). Connect social accounts, configure queues or automations, view social Insights, edit Link in bio, manage billing and membership, or delete your account in the [Wahlu app](https://app.wahlu.com). Administrator controls and native-app distribution are outside this plugin.
 
 ## Support
 
-- Docs: [wahlu.com/docs/mcp-server](https://wahlu.com/docs/mcp-server)
-- Privacy: [wahlu.com/privacy](https://wahlu.com/privacy)
-- Terms: [wahlu.com/terms](https://wahlu.com/terms)
-- Contact: [hello@wahlu.com](mailto:hello@wahlu.com)
-
-## Licence
+[MCP docs](https://wahlu.com/docs/mcp-server) · [Help](https://wahlu.com/help) · [Privacy](https://wahlu.com/privacy) · [Terms](https://wahlu.com/terms) · [hello@wahlu.com](mailto:hello@wahlu.com)
 
 MIT. See [LICENSE](LICENSE).

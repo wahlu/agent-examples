@@ -11,7 +11,7 @@ Take one idea from conversation to a Wahlu schedule. By default the schedule is 
 
 1. **Pick the brand.** Call `get_context`. If there's more than one brand, ask which one. Call `get_brand_context` and write the copy in the brand's voice, following its custom instructions and default call to action.
 2. **Pick the accounts.** Call `list_targets` for the brand and confirm which connected accounts the post should go to. Only use accounts marked schedulable.
-3. **Check the format.** Call `get_platform_capabilities` and choose a post type each platform supports for this media (for example an Instagram grid post for an image, a Reel or TikTok video for a clip).
+3. **Check the format.** Call `get_platform_capabilities` and choose a supported post type and media count for each account. Multi-photo posts are supported on Instagram, TikTok, Facebook Pages and LinkedIn personal profiles; use the current returned rules rather than copying one platform's limit to another. Facebook Reels and Stories still use one item.
 4. **Get the media into Wahlu.**
    - A public image or video URL: call `import_media_from_url` with a stable `idempotency_key`.
    - A file you hold as data: call `upload_media` (small files inline, larger ones through the returned upload URL).
@@ -19,10 +19,10 @@ Take one idea from conversation to a Wahlu schedule. By default the schedule is 
    - Existing Wahlu media: call `list_media` and let the person choose.
    Then call `get_media` once to check it's ready. If it's still processing, say so and check again later; don't loop.
 5. **Write the copy.** Draft a caption per platform in the brand's voice. Keep it true to what the person told you. Show it to them and make their edits.
-6. **Save the draft.** Call `create_draft` with the copy, media and intended accounts, and a stable `idempotency_key`.
+6. **Save the draft.** Call `list_labels` if the person wants an existing label. Call `create_draft` with the copy, media, labels and intended accounts, and a stable `idempotency_key`. Use `update_draft` for approved name or caption changes while it is still unused.
 7. **Check it's ready.** Call `preflight_draft` with the accounts and the planned time. It changes nothing. Explain any blockers and fix them before going on.
-8. **Schedule it.** Call `create_schedule` with `approval_status: "pending_review"` and a stable `idempotency_key`. Only use `approved` when the person has clearly said to publish without review, and the connection has the **Publish to social accounts** permission.
-9. **Confirm.** Call `get_schedule` once and report the time, the accounts and the status. Tell the person where to approve it: the Wahlu calendar.
+8. **Schedule it.** Call `create_schedule` with `approval_status: "pending_review"` and a stable `idempotency_key`. Only use `approved` when the person has clearly said to publish without review, and the connection has the **Publishing** permission.
+9. **Confirm.** Call `get_schedule` once and report the time, the accounts and the status. It can be approved in the Wahlu calendar, or with `approve_schedule` after a separate explicit decision when the connection has Publishing permission.
 
 ## Rules
 
@@ -30,3 +30,6 @@ Take one idea from conversation to a Wahlu schedule. By default the schedule is 
 - Never guess IDs. Use the `brand_id`, `integration_id`, media and content IDs returned by earlier calls.
 - Reuse the same `idempotency_key` when retrying the same request.
 - To move or cancel a schedule later, use `reschedule_schedule` or `cancel_schedule`, and only after the person asks.
+- A request to "queue" means a held schedule at an agreed time here. Queue configuration and automatic queue slots are managed in the Wahlu app; do not claim to add a post to a queue.
+- Use `get_plans` when plan limits prevent a request. Free and paid workspaces follow their current entitlements; do not promise a trial or upgrade based on old copy.
+- TikTok privacy must use live values from `refresh_target_dynamic_options` for the exact account; changing it on an existing draft uses `update_draft_tiktok_privacy`. Explain that the refresh can change stored connection state before requesting it.

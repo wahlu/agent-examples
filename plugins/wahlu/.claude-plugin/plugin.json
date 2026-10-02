@@ -1,8 +1,8 @@
 {
 	"name": "wahlu",
 	"displayName": "Wahlu",
-	"version": "0.1.0",
-	"description": "Social media scheduling for you and your AI agent. Plan a week, turn an idea into a scheduled post, repurpose a video and recap the week across Instagram, Facebook, TikTok, YouTube and LinkedIn, with schedules held for your review by default.",
+	"version": "0.3.0",
+	"description": "Plan, draft, review and schedule social posts with Wahlu. Manage unused drafts and held schedules, review Autopilot ideas, and recap your calendar with publishing under your control.",
 	"author": {
 		"name": "Wahlu",
 		"email": "hello@wahlu.com",
