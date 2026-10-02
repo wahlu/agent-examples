@@ -2,7 +2,7 @@
 
 These prompts work in any client connected to Wahlu (Claude, ChatGPT, Codex, Cursor, Gemini CLI or OpenClaw). They're illustrations, not recorded conversations: your agent's wording will differ, but the Wahlu tools it calls should match.
 
-Every workflow starts by reading, and schedules are **held for review** unless you say otherwise. A held schedule sits in your Wahlu calendar and can't publish until you approve it there.
+Every workflow starts by reading, and schedules are **held for review** unless you say otherwise. A held schedule sits in your Wahlu calendar and cannot publish until you approve it there, or explicitly approve that exact schedule through an agent connection with Publishing permission.
 
 ## First connection
 
@@ -75,3 +75,9 @@ Tools: `get_autopilot_week`, then `regenerate_autopilot_item` for an explicitly 
 > Upload ~/Desktop/launch.mp4 to Wahlu for my main brand, then tell me when it's ready.
 
 Tools: `upload_media_from_file`, `get_media`. Needs the local server (`npx -y @wahlu/mcp-server`); the hosted server can't read your files.
+
+## Approve one held post
+
+> Show my held Spring launch post and its account, caption and time. Wait for me to approve that exact schedule before releasing it for publication.
+
+Tools: `list_schedules`, `get_schedule`, `approve_schedule` only after explicit approval and with both scheduling and Publishing permissions. Re-read status before an uncertain retry; approval allows the normal publishing pipeline to run.
