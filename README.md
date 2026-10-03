@@ -6,13 +6,13 @@ This repository holds the connect guides, example prompts, a portable ChatGPT/Co
 
 ## Connect
 
-| | |
-|---|---|
-| MCP server (hosted) | `https://mcp.wahlu.com/mcp`: Streamable HTTP, OAuth sign-in in your browser, no API key |
-| MCP server (local) | `npx -y @wahlu/mcp-server` with a Wahlu API key; adds uploads from your computer |
-| CLI | `npx -y @wahlu/cli` |
-| REST API | `https://api.wahlu.com/v1` ([docs](https://wahlu.com/docs)) |
-| Official MCP registry | `com.wahlu/mcp-server` |
+|                       |                                                                                         |
+| --------------------- | --------------------------------------------------------------------------------------- |
+| MCP server (hosted)   | `https://mcp.wahlu.com/mcp`: Streamable HTTP, OAuth sign-in in your browser, no API key |
+| MCP server (local)    | `npx -y @wahlu/mcp-server` with a Wahlu API key; adds uploads from your computer        |
+| CLI                   | `npx -y @wahlu/cli`                                                                     |
+| REST API              | `https://api.wahlu.com/v1` ([docs](https://wahlu.com/docs))                             |
+| Official MCP registry | `com.wahlu/mcp-server`                                                                  |
 
 Guides for each client:
 
@@ -29,14 +29,14 @@ Or give your agent [wahlu.com/connect.md](https://wahlu.com/connect.md). It's wr
 
 [`plugins/wahlu`](plugins/wahlu) bundles the Wahlu connector with six skills:
 
-| Skill | What it does |
-|---|---|
-| `plan-a-week` | Proposes a week of posts that fit your connected accounts and calendar, then saves the ones you approve as drafts |
-| `idea-to-scheduled-post` | Turns an idea, link or image into platform-ready copy, checks it and schedules it held for review |
-| `repurpose-video` | Adapts one video for Reels, TikTok, YouTube Shorts, Facebook and LinkedIn with a caption for each |
-| `weekly-recap` | Read-only summary of what went out, what needs attention and what's coming up |
-| `manage-posts` | Edits unused drafts and manages exact unsent schedules, with separate publishing approval |
-| `review-autopilot` | Reads a named plan's week and reviews one unused text idea without starting generation |
+| Skill                    | What it does                                                                                                      |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| `plan-a-week`            | Proposes a week of posts that fit your connected accounts and calendar, then saves the ones you approve as drafts |
+| `idea-to-scheduled-post` | Turns an idea, link or image into platform-ready copy, checks it and schedules it held for review                 |
+| `repurpose-video`        | Adapts one video for Reels, TikTok, YouTube Shorts, Facebook and LinkedIn with a caption for each                 |
+| `weekly-recap`           | Read-only summary of what went out, what needs attention and what's coming up                                     |
+| `manage-posts`           | Edits unused drafts and manages exact unsent schedules, with separate publishing approval                         |
+| `review-autopilot`       | Finds the current plan and available weeks, then reviews one unused text idea without starting generation         |
 
 Install it in Claude Code:
 
@@ -47,21 +47,23 @@ Install it in Claude Code:
 
 Then run `/mcp`, select **wahlu** and sign in.
 
+The 0.4.0 package describes 37 hosted tools, 38 generic tools and 39 local stdio tools, with six workflows. The local 0.13.0 package is not yet npm-published; `npx` installs the current published version and may expose an older inventory. Use the actual connected tool schema and preserve permission refusals. Source publication and local validation do not establish authenticated ChatGPT/Claude execution or a directory listing.
+
 ## Example prompts
 
 See [prompts](prompts/README.md) for first-connection checks, planning a week, an idea to a held post, one video for every platform, moving and cancelling posts, and a weekly recap.
 
 ## What your agent can do
 
-| Area | Tools |
-|---|---|
-| Discovery | `get_context`, `get_brand_context`, `list_labels`, `list_targets`, `get_platform_capabilities`, `refresh_target_dynamic_options` |
-| Media | `list_media`, `get_media`, `import_media_from_url`, `upload_media`, `create_media_repair_derivative`, `upload_media_from_file` (local server only) |
-| Content | `list_content_items`, `get_content_item`, `list_drafts`, `create_draft`, `update_draft`, `delete_draft`, `update_draft_tiktok_privacy`, `preflight_draft` |
-| Schedules | `list_schedules`, `get_schedule`, `create_schedule`, `reschedule_schedule`, `cancel_schedule`, `approve_schedule`, `move_schedule_to_draft`, `delete_schedule`, `get_publish_run_receipt`, `cleanup_provider_publications`, `list_history` |
-| Brand surfaces | `get_bio_page`, `get_bio_stats`, `get_autopilot_week`, `approve_autopilot_item`, `regenerate_autopilot_item`, `list_notifications` |
+| Area           | Tools                                                                                                                                                                                                                                      |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Discovery      | `get_context`, `get_brand_context`, `list_labels`, `list_targets`, `get_platform_capabilities`, `refresh_target_dynamic_options`                                                                                                           |
+| Media          | `list_media`, `get_media`, `import_media_from_url`, `upload_media`, `create_media_repair_derivative`, `upload_media_from_file` (local server only)                                                                                         |
+| Content        | `list_content_items`, `get_content_item`, `list_drafts`, `create_draft`, `update_draft`, `delete_draft`, `update_draft_tiktok_privacy`, `preflight_draft`                                                                                  |
+| Schedules      | `list_schedules`, `get_schedule`, `create_schedule`, `reschedule_schedule`, `cancel_schedule`, `approve_schedule`, `move_schedule_to_draft`, `delete_schedule`, `get_publish_run_receipt`, `cleanup_provider_publications`, `list_history` |
+| Brand surfaces | `get_bio_page`, `get_bio_stats`, `get_autopilot_plan`, `get_autopilot_week`, `approve_autopilot_item`, `regenerate_autopilot_item`, `list_notifications`                                                                                   |
 
-Connecting social accounts, queue configuration, Insights, reply automations, Link in bio editing, billing and account management stay in the [Wahlu app](https://app.wahlu.com). Final schedule approval from an agent requires Publishing permission and explicit approval. Existing draft editing is limited to unused draft names and captions. History and notifications require their separate OAuth scopes; the ordinary API-key selector does not offer those two scopes. See the [plugin README](plugins/wahlu/README.md) for current access limits.
+Connecting social accounts, queue configuration, Insights, reply automations, Link in bio editing, billing and account management stay in the [Wahlu app](https://app.wahlu.com). Final schedule approval from an agent requires Publishing permission and explicit approval. Existing draft editing is limited to unused draft names and shared captions; separate platform captions stay in Wahlu. History and notifications require their separate OAuth scopes; the ordinary API-key selector does not offer those two scopes. See the [plugin README](plugins/wahlu/README.md) for current access limits.
 
 ## Safety
 

@@ -11,14 +11,14 @@ A read-only summary of the past seven days and the next seven. This skill never 
 
 1. **Pick the brand.** Call `get_context`. If there's more than one brand, ask which one, or offer a recap per brand.
 2. **Check account health.** Call `list_targets` and note any account that needs reconnecting in the Wahlu app.
-3. **Last week.** Call `list_schedules` with `from` seven days ago and `to` now. When published-post links are wanted, request `list_history`, which requires `publications:read`. If it reports unavailable permission, use schedule receipts and explain the missing access. Current context may omit the History and notifications read scopes, so do not infer permission solely from an absent context entry. Group the schedule results:
+3. **Last week.** Call `list_schedules` with `from` seven days ago and `to` now. Current `get_context` reports already-held History and notification read permissions. When published-post links are wanted, request `list_history`, which requires `publications:read`. If access is unavailable, use schedule receipts and explain the missing permission. An older host snapshot may omit those context entries; never bypass an actual permission refusal. Group the schedule results:
    - published
    - failed or blocked, with the reason Wahlu gives
    - still held for review (these will not publish until approved)
    - cancelled
 4. **Check anything unclear.** For a schedule that ran, call `get_publish_run_receipt` to see each platform's outcome. Don't retry or clean up anything in this skill.
 5. **Next week.** Call `list_schedules` with `from` now and `to` seven days ahead. List the posts by day and platform, and point out days with nothing planned.
-6. **Other available context.** If relevant, `get_bio_page` and `get_bio_stats` read the Link in bio page and its views, visitors and link clicks for the supported 7- or 28-day window. These are not social-post engagement metrics. A named Autopilot plan can be read with `get_autopilot_week`. `list_notifications` needs `notifications:read` and returns only notices visible to the connected user; it does not mark them read. Skip unavailable scopes rather than infer missing data.
+6. **Other available context.** If relevant, `get_bio_page` and `get_bio_stats` read the Link in bio page and its views, visitors and link clicks for the supported 7- or 28-day window. These are not social-post engagement metrics. Preserve a supplied Autopilot plan ID, or discover the current plan and available weeks with `get_autopilot_plan`, then use `get_autopilot_week` for a selected week. A null plan is absence, not a reason to generate one. `list_notifications` needs `notifications:read` and returns only notices visible to the connected user; it does not mark them read. Skip unavailable scopes rather than infer missing data.
 7. **Write the recap.** Keep it short:
    - **Went out:** count by platform, with the post names
    - **Needs attention:** failures, blocked posts, accounts to reconnect, posts waiting for approval

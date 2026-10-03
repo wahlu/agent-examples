@@ -10,7 +10,7 @@
 			"name": "wahlu",
 			"source": "./plugins/wahlu",
 			"description": "Plan, draft and schedule social posts to Instagram, Facebook, TikTok, YouTube and LinkedIn from Claude, held for your review by default.",
-			"version": "0.3.1"
+			"version": "0.4.0"
 		}
 	]
 }

@@ -18,7 +18,7 @@ Wahlu's listing in the Claude directory is coming soon; until then, add it as a 
 
 ### With the plugin (recommended)
 
-The 0.3.1 plugin adds the Wahlu MCP server and six skills: `plan-a-week`, `idea-to-scheduled-post`, `repurpose-video`, `weekly-recap`, `manage-posts` and `review-autopilot`.
+The 0.4.0 plugin adds the Wahlu MCP server and six skills: `plan-a-week`, `idea-to-scheduled-post`, `repurpose-video`, `weekly-recap`, `manage-posts` and `review-autopilot`.
 
 ```text
 /plugin marketplace add wahlu/agent-examples
@@ -27,7 +27,7 @@ The 0.3.1 plugin adds the Wahlu MCP server and six skills: `plan-a-week`, `idea-
 
 Then run `/mcp`, select **wahlu** and sign in to Wahlu in the browser that opens.
 
-The current shared hosted profile has 36 tools. A host may keep an older imported list until it refreshes the connection. The published source and local plugin validation do not prove an authenticated Claude installation, OAuth session, skill run or widget response; those checks remain pending for the directory packet.
+The current shared hosted source profile has 37 tools. A host may keep an older imported list until it refreshes the connection. A package or source update and local plugin validation do not prove an authenticated Claude installation, OAuth session, skill run or widget response; those checks remain pending for the directory packet.
 
 ### Just the MCP server
 
@@ -45,7 +45,7 @@ The hosted server can't read files on your computer. To upload local files, run 
 claude mcp add --scope user wahlu-local --env WAHLU_API_KEY=your-key -- npx -y @wahlu/mcp-server
 ```
 
-Local stdio has 38 tools: the hosted workflows plus `get_plans` for catalogue reads and `upload_media_from_file` for local-file uploads. Generic MCP has 37 tools. The shared hosted HTTP profile excludes the catalogue; this is the current implementation introduced for OpenAI directory policy, rather than a separate Claude catalogue restriction.
+Current local 0.13.0 stdio has 39 tools: the hosted workflows plus `get_plans` for catalogue reads and `upload_media_from_file` for local-file uploads. Generic MCP has 38 tools. npm publication of 0.13.0 remains pending; the command above installs the published package, which may have an older inventory. Laptop1's separately installed exact local 0.13.0 artifacts have passed a real 39-tool protocol scan, without authentication or tool execution. The shared hosted HTTP profile excludes the catalogue; this is the current implementation introduced for OpenAI directory policy, rather than a separate Claude catalogue restriction.
 
 ## What you'll see when you sign in
 

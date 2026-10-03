@@ -4,14 +4,14 @@ Plan, draft, review and schedule social posts through your Wahlu account. Use yo
 
 ## Included workflows
 
-| Skill | What it does |
-|---|---|
-| `plan-a-week` | Plans around your existing calendar and saves approved ideas as drafts |
-| `idea-to-scheduled-post` | Prepares captions, media and labels, checks readiness and creates a held schedule |
-| `repurpose-video` | Reuses one video across suitable connected platforms with their own settings |
-| `weekly-recap` | Reads calendar outcomes, available History links, Link in bio stats and upcoming posts |
-| `manage-posts` | Edits or deletes unused drafts and manages exact unsent schedules, including permitted approval |
-| `review-autopilot` | Reads a named plan's week and reviews, regenerates or approves one unused text idea |
+| Skill                    | What it does                                                                                     |
+| ------------------------ | ------------------------------------------------------------------------------------------------ |
+| `plan-a-week`            | Plans around your existing calendar and saves approved ideas as drafts                           |
+| `idea-to-scheduled-post` | Prepares captions, media and labels, checks readiness and creates a held schedule                |
+| `repurpose-video`        | Reuses one video across suitable connected platforms with their own settings                     |
+| `weekly-recap`           | Reads calendar outcomes, available History links, Link in bio stats and upcoming posts           |
+| `manage-posts`           | Edits or deletes unused drafts and manages exact unsent schedules, including permitted approval  |
+| `review-autopilot`       | Finds the current plan and its weeks, then reviews, regenerates or approves one unused text idea |
 
 The package includes the hosted HTTPS MCP configuration and both portable OpenAI and Claude-compatible manifests. It runs no scripts, hooks or binaries on your computer. Public directory submission and publication are separate from this source package.
 
@@ -24,19 +24,21 @@ The package includes the hosted HTTPS MCP configuration and both portable OpenAI
 
 ## Available tools
 
-The hosted server has 36 tools. A host may retain an older imported tool list until the connection is refreshed. Local stdio has 38 tools, with separate catalogue discovery and local-file upload; those two tools are not part of the hosted directory package.
+Package 0.4.0 describes 37 hosted tools. A host may retain an older imported tool list until the connection is refreshed. Local stdio has 39 tools, with separate catalogue discovery and local-file upload; those two tools are not part of the hosted directory package. Package preparation does not certify actual host execution or directory submission.
 
-| Area | Hosted tools |
-|---|---|
-| Context | `get_context`, `get_brand_context`, `list_labels`, `list_targets`, `refresh_target_dynamic_options`, `get_platform_capabilities` |
-| Media | `import_media_from_url`, `list_media`, `get_media`, `create_media_repair_derivative`, `upload_media` |
-| Content | `create_draft`, `update_draft_tiktok_privacy`, `preflight_draft`, `list_content_items`, `get_content_item`, `list_drafts`, `update_draft`, `delete_draft` |
+| Area                  | Hosted tools                                                                                                                                                                                                                               |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Context               | `get_context`, `get_brand_context`, `list_labels`, `list_targets`, `refresh_target_dynamic_options`, `get_platform_capabilities`                                                                                                           |
+| Media                 | `import_media_from_url`, `list_media`, `get_media`, `create_media_repair_derivative`, `upload_media`                                                                                                                                       |
+| Content               | `create_draft`, `update_draft_tiktok_privacy`, `preflight_draft`, `list_content_items`, `get_content_item`, `list_drafts`, `update_draft`, `delete_draft`                                                                                  |
 | Calendar and outcomes | `create_schedule`, `list_schedules`, `get_schedule`, `get_publish_run_receipt`, `cleanup_provider_publications`, `reschedule_schedule`, `cancel_schedule`, `approve_schedule`, `move_schedule_to_draft`, `delete_schedule`, `list_history` |
-| Brand surfaces | `get_bio_page`, `get_bio_stats`, `get_autopilot_week`, `approve_autopilot_item`, `regenerate_autopilot_item`, `list_notifications` |
+| Brand surfaces        | `get_bio_page`, `get_bio_stats`, `get_autopilot_plan`, `get_autopilot_week`, `approve_autopilot_item`, `regenerate_autopilot_item`, `list_notifications`                                                                                   |
 
-Read current platform media limits before creating multi-photo posts. Facebook multi-photo posts go to Pages; LinkedIn targets are personal profiles. Draft editing changes only an unused draft's name or caption. Autopilot review needs an existing plan ID; approving an idea does not start generation, and any later schedule remains held for final approval.
+Read current platform media limits before creating multi-photo posts. Facebook multi-photo posts go to Pages; LinkedIn targets are personal profiles. Draft editing changes only an unused draft's name or shared caption (`copy_mode: single`). Separate per-platform captions stay in Wahlu. `get_autopilot_plan` discovers the current scoped plan and up to 100 recent week numbers, or returns no plan without creating one. Use its returned ID and an available week with `get_autopilot_week`. Approving an idea does not start generation, and any later schedule remains held for final approval.
 
-History needs `publications:read`; notifications need `notifications:read`. These are additional OAuth scopes and are not newly available through the ordinary API-key selector. Existing grants may lack them. Explain unavailable access and use schedule receipts for outcomes where possible. Link in bio stats describe page visits and link clicks, not social engagement Insights.
+For more media, call `list_media` with `pagination: "cursor"` and pass the returned `next_cursor` with the same brand and pagination setting. Stop when the requested item is found or the cursor is null. An empty page can still return an advancing cursor. Default list calls keep their existing response; do not silently restart with a different brand or filter.
+
+History needs `publications:read`; notifications need `notifications:read`. Current `get_context` reports these safe reads only when already held. It does not grant them or expose administrative scopes. They are not newly available through the ordinary API-key selector. Existing grants may lack them. Explain unavailable access and use schedule receipts for outcomes where possible. Link in bio stats describe page visits and link clicks, not social engagement Insights.
 
 ## Data, permissions and control
 
@@ -53,4 +55,4 @@ History needs `publications:read`; notifications need `notifications:read`. Thes
 
 MIT. See [LICENSE](LICENSE).
 
-Hosted directory tools exclude the public subscription catalogue under [OpenAI commerce policy](https://developers.openai.com/plugins/plugin-guidelines). Local stdio keeps its 38-tool inventory, including `get_plans` and `upload_media_from_file`; the generic SDK and CLI catalogue remain separate from directory use.
+Hosted directory tools exclude the public subscription catalogue under [OpenAI commerce policy](https://developers.openai.com/plugins/plugin-guidelines). Local stdio keeps its 39-tool inventory, including `get_plans` and `upload_media_from_file`; the generic SDK and CLI catalogue remain separate from directory use.

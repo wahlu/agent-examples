@@ -5,11 +5,11 @@ description: Find, edit or delete an unused Wahlu draft, or inspect, move, cance
 
 # Manage existing posts
 
-Read `get_context` and choose a returned brand. Use `list_drafts` or `list_content_items` and `get_content_item` for drafts; use `list_schedules` and `get_schedule` for schedules. Show the exact post, accounts, time and status before acting. Use IDs returned by these reads.
+Read `get_context` and choose a returned brand. Its permission list reports already-held public scopes; it grants no extra access. Use `list_drafts` or `list_content_items` and `get_content_item` for drafts; use `list_schedules` and `get_schedule` for schedules. Use an exact `label` ID filter when useful and exposed by the connected schema. Show the exact post, accounts, time and status before acting. Use IDs returned by these reads.
 
 ## Drafts
 
-- `update_draft` changes the name or caption of one unused draft. It cannot edit content already scheduled, queued or published. Supply the matching `confirm_draft_id` and a stable `idempotency_key` after the person approves the change.
+- `update_draft` changes the name or shared caption of one unused draft. Caption changes require `copy_mode: "single"`; separate per-platform captions must be edited in Wahlu, while name changes remain supported. It cannot edit content already scheduled, queued or published. Supply the matching `confirm_draft_id` and a stable `idempotency_key` after the person approves the change.
 - `delete_draft` deletes one unused draft after exact confirmation. It keeps media and published posts. Use the matching confirmation ID and a stable key.
 - `list_labels` returns existing labels; `list_drafts` accepts an exact label filter. Changing platform settings or media on existing drafts beyond the exposed tools stays in Wahlu.
 

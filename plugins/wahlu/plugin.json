@@ -1,6 +1,6 @@
 {
 	"name": "wahlu",
-	"version": "0.3.1",
+	"version": "0.4.0",
 	"description": "Plan, draft, review and schedule social posts with Wahlu. Manage unused drafts and held schedules, review Autopilot ideas, and recap your calendar with publishing under your control.",
 	"author": {
 		"name": "Wahlu",
@@ -26,7 +26,7 @@
 			"interface": {
 				"displayName": "Wahlu",
 				"shortDescription": "Plan and manage social posts",
-				"longDescription": "Wahlu connects your social content workflows to ChatGPT and Codex. Choose a workspace, brands and permissions through Wahlu OAuth. Plan posts in your brand's voice for Instagram, Facebook Pages, TikTok, YouTube and LinkedIn personal profiles. Read current format rules and account health, bring in images or videos, browse media, check readiness and save labelled drafts. Multi-photo posts use each platform's current media limits.\n\nManage unused draft names and captions, delete an exact unused draft, create held schedules, inspect the calendar and publishing outcomes, reschedule or cancel unsent posts, and return unsent schedules to Drafts or delete them. Approving a held schedule requires explicit approval and the separate Publishing permission; new schedules are held for review by default.\n\nRead brand voice, strategy and brand kit, existing labels, Link in bio pages and their views and clicks, and a named Autopilot plan's week. On eligible plans, approve or regenerate an unused Autopilot text idea. Agent-approved ideas keep resulting schedules held for final approval. History with public post links and user-visible notifications require their separate connection scopes. Explain unavailable features without changing billing.\n\nUse the Wahlu app to connect social accounts, configure queues, edit Link in bio, set up Instagram reply automations, see social engagement Insights, manage workspace membership or billing, and delete your account. The plugin does not expose administrator controls or Studio image, video or audio generation.",
+				"longDescription": "Wahlu connects your social content workflows to ChatGPT and Codex. Choose a workspace, brands and permissions through Wahlu OAuth. Plan posts in your brand's voice for Instagram, Facebook Pages, TikTok, YouTube and LinkedIn personal profiles. Read current format rules and account health, bring in images or videos, browse media across pages, check readiness and save labelled drafts. Multi-photo posts use each platform's current media limits.\n\nManage unused draft names and shared captions, delete an exact unused draft, create held schedules, inspect the calendar and publishing outcomes, reschedule or cancel unsent posts, and return unsent schedules to Drafts or delete them. Approving a held schedule requires explicit approval and the separate Publishing permission; new schedules are held for review by default.\n\nRead brand voice, strategy and brand kit, existing labels, Link in bio pages and their views and clicks, and the current Autopilot plan with its available weeks. On eligible plans, approve or regenerate an unused Autopilot text idea. Agent-approved ideas keep resulting schedules held for final approval. History with public post links and user-visible notifications require their separate connection scopes. Explain unavailable features without changing billing.\n\nUse the Wahlu app to connect social accounts, configure queues, edit Link in bio, set up Instagram reply automations, see social engagement Insights, manage workspace membership or billing, and delete your account. The plugin does not expose administrator controls or Studio image, video or audio generation.",
 				"developerName": "Wahlu",
 				"category": "Productivity",
 				"capabilities": ["Read", "Write"],
@@ -51,13 +51,13 @@
 							"description": "Discover the reviewer workspace, brand voice, labels, targets and current formats.",
 							"prompt": "Using only Wahlu Review Fixture, show my workspace, brand voice and strategy, existing labels, connected-account health, supported formats including multi-photo Facebook and LinkedIn posts. Do not change anything.",
 							"tools_triggered": "get_context, get_brand_context, list_labels, list_targets, get_platform_capabilities",
-							"expected_behavior": "Returns only the reviewer workspace and allowed brand, current formats, and account repair guidance. Disconnected targets are unavailable. Does not display subscription catalogues, prices or upgrade links."
+							"expected_behavior": "Returns only the reviewer workspace and allowed brand, current formats, held public read permissions, and account repair guidance. Disconnected targets are unavailable. Does not display subscription catalogues, prices or upgrade links."
 						},
 						{
-							"description": "Read the seeded media gallery and exact ready media detail with its host widget.",
-							"prompt": "For Wahlu Review Fixture, show recent media and open the item whose filename contains WAHLU_REVIEW_MEDIA. Show its readiness and preview. Do not upload, import, repair or delete it.",
+							"description": "Browse the seeded media gallery across pages and open exact ready media with its host widget.",
+							"prompt": "For Wahlu Review Fixture, browse recent media using cursor pagination if needed to find the item whose filename contains WAHLU_REVIEW_MEDIA. Stop when you find it, then show its readiness and preview. Do not upload, import, repair or delete it.",
 							"tools_triggered": "list_media, get_media",
-							"expected_behavior": "Shows bounded media and exact seeded media details, current readiness and a safe Wahlu link. The actual host gallery and detail cards render without a media mutation."
+							"expected_behavior": "Uses pagination: cursor and the returned next_cursor for each further page with the same brand. Stops when the exact seeded media is found or next_cursor is null, including an empty advancing page. Shows exact readiness and a safe Wahlu link. The actual host gallery and detail cards render without a media mutation."
 						},
 						{
 							"description": "Exercise one reversible unused-draft lifecycle with labels and preflight.",
@@ -72,10 +72,10 @@
 							"expected_behavior": "Shows the seeded December fixture and creates only a separate pending_review schedule using returned IDs and stable keys. Its calendar/status card reflects the held state and cancellation. Publishing stays unavailable; no rescheduling, approval, execution or provider call occurs."
 						},
 						{
-							"description": "Read current brand surfaces and review one exact unused Autopilot topic on the fixture plan.",
-							"prompt": "For Wahlu Review Fixture, read its Link in bio page and last 7 days of views and clicks. Read week 1 of the review Autopilot plan identified in the reviewer instructions. Regenerate only the unused WAHLU_REVIEW_AUTOPILOT idea using the guidance \"coffee brewing tips\", then show the new topic for my approval before approving that exact idea. Summarise History post links and my notifications only when this connection permits them. Do not generate media, run a week or approve a schedule.",
-							"tools_triggered": "get_bio_page, get_bio_stats, get_autopilot_week, regenerate_autopilot_item, approve_autopilot_item, list_history, list_notifications",
-							"expected_behavior": "Uses the exact supplied fixture plan and returned idea ID. Regeneration changes one unused text topic on an eligible paid fixture plan; subsequent idea approval requires the reviewer's explicit decision. Future schedules remain held. Bio stats are separate from social engagement metrics; History and notifications either return scoped sample data or explain unavailable scopes. No generation job, schedule approval or publishing occurs."
+							"description": "Discover the current Autopilot plan and review one exact unused fixture idea alongside brand reads.",
+							"prompt": "For Wahlu Review Fixture, read its Link in bio page and last 7 days of views and clicks. Discover its current Autopilot plan and available weeks, then read week 1 of that exact returned plan. Regenerate only the unused WAHLU_REVIEW_AUTOPILOT idea using the guidance \"coffee brewing tips\", then show the new topic for my approval before approving that exact idea. Summarise History post links and my notifications only when this connection permits them. Do not generate media, run a week or approve a schedule.",
+							"tools_triggered": "get_bio_page, get_bio_stats, get_autopilot_plan, get_autopilot_week, regenerate_autopilot_item, approve_autopilot_item, list_history, list_notifications",
+							"expected_behavior": "Plan discovery returns only the scoped current plan ID, status and bounded available week numbers, or explains absence without creating a plan. Uses that returned plan and exact fixture idea ID. Regeneration changes one unused text topic on an eligible paid fixture plan; re-read the week before showing the new topic and obtain explicit approval before idea approval. Future schedules remain held. Bio stats are separate from social engagement metrics; History and notifications either return scoped sample data or explain unavailable scopes. No generation job, schedule approval or publishing occurs."
 						}
 					],
 					"negative": [
@@ -100,7 +100,7 @@
 				"commerce_description": "Does not sell products or process payments. Existing Wahlu plan and credit limits apply."
 			},
 			"publication": {
-				"release_notes": "Refresh current supported draft, schedule, photo-set, Autopilot, History, Link in bio and notification workflows with six skills. Hosted catalogue discovery is excluded under directory commerce policy."
+				"release_notes": "Add current Autopilot plan discovery, explicit cursor media browsing and disclosure of already-held History and notification read permissions. Update the six workflows and exact 37-tool hosted review inventory; preserve held schedules and separate final publishing approval. Hosted catalogue discovery stays excluded."
 			}
 		}
 	}

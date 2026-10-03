@@ -16,10 +16,10 @@ Take one idea from conversation to a Wahlu schedule. By default the schedule is 
    - A public image or video URL: call `import_media_from_url` with a stable `idempotency_key`.
    - A file you hold as data: call `upload_media` (small files inline, larger ones through the returned upload URL).
    - A file on the person's computer with the local server: call `upload_media_from_file`.
-   - Existing Wahlu media: call `list_media` and let the person choose.
-   Then call `get_media` once to check it's ready. If it's still processing, say so and check again later; don't loop.
+   - Existing Wahlu media: call `list_media` and let the person choose. To browse further, use `pagination: "cursor"` and the returned `next_cursor` with the same brand. Stop when the item is found or the cursor is null; an empty page may still advance. Use pagination only when the connected schema exposes it.
+     Then call `get_media` once to check it's ready. If it's still processing, say so and check again later; don't loop.
 5. **Write the copy.** Draft a caption per platform in the brand's voice. Keep it true to what the person told you. Show it to them and make their edits.
-6. **Save the draft.** Call `list_labels` if the person wants an existing label. Call `create_draft` with the copy, media, labels and intended accounts, and a stable `idempotency_key`. Use `update_draft` for approved name or caption changes while it is still unused.
+6. **Save the draft.** Call `list_labels` if the person wants an existing label. Call `create_draft` with the copy, media, labels and intended accounts, and a stable `idempotency_key`. Use `update_draft` for approved name changes while it is still unused, or a shared caption change when `copy_mode` is `single`. Separate per-platform captions must be edited in Wahlu; do not retry a refused caption update as an arbitrary settings patch.
 7. **Check it's ready.** Call `preflight_draft` with the accounts and the planned time. It changes nothing. Explain any blockers and fix them before going on.
 8. **Schedule it.** Call `create_schedule` with `approval_status: "pending_review"` and a stable `idempotency_key`. Only use `approved` when the person has clearly said to publish without review, and the connection has the **Publishing** permission.
 9. **Confirm.** Call `get_schedule` once and report the time, the accounts and the status. It can be approved in the Wahlu calendar, or with `approve_schedule` after a separate explicit decision when the connection has Publishing permission.
