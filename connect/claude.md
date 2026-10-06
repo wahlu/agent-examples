@@ -18,7 +18,7 @@ Wahlu's listing in the Claude directory is coming soon; until then, add it as a 
 
 ### With the plugin (recommended)
 
-The 0.4.0 plugin adds the Wahlu MCP server and six skills: `plan-a-week`, `idea-to-scheduled-post`, `repurpose-video`, `weekly-recap`, `manage-posts` and `review-autopilot`.
+The 0.4.1 plugin adds the Wahlu MCP server and six skills: `plan-a-week`, `idea-to-scheduled-post`, `repurpose-video`, `weekly-recap`, `manage-posts` and `review-autopilot`.
 
 ```text
 /plugin marketplace add wahlu/agent-examples
@@ -45,7 +45,7 @@ The hosted server can't read files on your computer. To upload local files, run 
 claude mcp add --scope user wahlu-local --env WAHLU_API_KEY=your-key -- npx -y @wahlu/mcp-server
 ```
 
-Current local 0.13.0 stdio has 39 tools: the hosted workflows plus `get_plans` for catalogue reads and `upload_media_from_file` for local-file uploads. Generic MCP has 38 tools. npm publication of 0.13.0 remains pending; the command above installs the published package, which may have an older inventory. Laptop1's separately installed exact local 0.13.0 artifacts have passed a real 39-tool protocol scan, without authentication or tool execution. The shared hosted HTTP profile excludes the catalogue; this is the current implementation introduced for OpenAI directory policy, rather than a separate Claude catalogue restriction.
+Local stdio (published 0.14.0, which adds X) has 39 tools: the hosted workflows plus `get_plans` for catalogue reads and `upload_media_from_file` for local-file uploads. Generic MCP has 38 tools. Laptop1's separately installed exact local 0.13.0 artifacts have passed a real 39-tool protocol scan, without authentication or tool execution. The shared hosted HTTP profile excludes the catalogue; this is the current implementation introduced for OpenAI directory policy, rather than a separate Claude catalogue restriction.
 
 ## What you'll see when you sign in
 

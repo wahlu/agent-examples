@@ -1,6 +1,6 @@
 ---
 name: weekly-recap
-description: Summarise a Wahlu brand's social media week, covering what was published, what failed or needs attention and what's coming up next, across Instagram, Facebook, TikTok, YouTube and LinkedIn. Use when someone asks how their week went, what went out or what's scheduled.
+description: Summarise a Wahlu brand's social media week, covering what was published, what failed or needs attention and what's coming up next, across Instagram, Facebook, TikTok, YouTube, LinkedIn and X. Use when someone asks how their week went, what went out or what's scheduled.
 ---
 
 # Weekly recap

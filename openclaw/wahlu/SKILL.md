@@ -1,13 +1,13 @@
 ---
 name: wahlu
-description: Social media scheduling for you and your AI agent. Plan, draft, check and schedule posts to Instagram, Facebook, TikTok, YouTube and LinkedIn with Wahlu, held for your review by default. Uses the Wahlu MCP server or the Wahlu CLI.
+description: Social media scheduling for you and your AI agent. Plan, draft, check and schedule posts to Instagram, Facebook, TikTok, YouTube, LinkedIn and X with Wahlu, held for your review by default. Uses the Wahlu MCP server or the Wahlu CLI.
 homepage: https://wahlu.com/openclaw
 metadata: {"openclaw":{"emoji":"🐦","requires":{"env":["WAHLU_API_KEY"],"anyBins":["npx","wahlu"]},"homepage":"https://wahlu.com/openclaw","primaryEnv":"WAHLU_API_KEY","install":[{"id":"npm","kind":"node","pkg":"@wahlu/cli","bins":["wahlu"],"label":"Install the Wahlu CLI"}]}}
 ---
 
 # Wahlu: social media scheduling for you and your AI agent
 
-Wahlu holds a person's brands, media, drafts and publishing calendar for **Instagram, Facebook, TikTok, YouTube and LinkedIn personal profiles**. With this skill you can read that context, bring in media, save drafts, check they're ready and schedule them. Schedules are **held for review** by default: they sit in the Wahlu calendar and can't publish until a person approves them.
+Wahlu holds a person's brands, media, drafts and publishing calendar for **Instagram, Facebook, TikTok, YouTube, LinkedIn personal profiles and X**. With this skill you can read that context, bring in media, save drafts, check they're ready and schedule them. Schedules are **held for review** by default: they sit in the Wahlu calendar and can't publish until a person approves them.
 
 - Website: [wahlu.com](https://wahlu.com)
 - Agent setup guide: [wahlu.com/connect.md](https://wahlu.com/connect.md)
@@ -55,6 +55,8 @@ The MCP server also has `list_media`, `upload_media`, `list_content_items`, `get
 }
 ```
 
+For a text post on X, use `"x_settings": { "media_ids": [], "post_type": "X_TEXT" }` instead. X takes 280 characters, and up to 4 images (`X_IMAGE`) or one video (`X_VIDEO`); it needs CLI 0.7.0 or MCP server 0.14.0 or later.
+
 Run `wahlu platforms capabilities --json` for every platform's post types and settings.
 
 ## Examples
@@ -67,8 +69,8 @@ Run `wahlu platforms capabilities --json` for every platform's post types and se
 ## Rules
 
 - Start read-only. Confirm the brand, accounts, copy and time with the person before any write.
-- Use `approval_status: pending_review` unless the person has clearly said to publish without review. An `approved` schedule needs the **Publish to social accounts** (`publish:execute`) permission and can go out at its time with no further review.
+- Use `approval_status: pending_review` unless the person has clearly said to publish without review. An `approved` schedule needs the **Publishing** (`publish:execute`) permission and can go out at its time with no further review.
 - Reuse the same `idempotency_key` when retrying the same request, so nothing is duplicated.
 - Read media and schedule status once per request; don't write polling loops.
 - Connecting social accounts, approving held schedules, editing existing drafts and managing queues happen in the Wahlu app. Tell the person when they need to go there.
-- Wahlu publishes to Instagram, Facebook, TikTok, YouTube and LinkedIn personal profiles only.
+- Wahlu publishes to Instagram, Facebook, TikTok, YouTube, LinkedIn personal profiles and X only.

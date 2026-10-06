@@ -1,6 +1,6 @@
 # Wahlu agent examples
 
-Wahlu is social media scheduling for you and your AI agent. Connect Claude, ChatGPT, Codex, Cursor, Gemini CLI or OpenClaw to Wahlu, and your agent can plan posts, prepare drafts, check they're ready and schedule them to **Instagram, Facebook, TikTok, YouTube and LinkedIn** personal profiles. Schedules are held for your review by default, so nothing publishes until you approve it.
+Wahlu is social media scheduling for you and your AI agent. Connect Claude, ChatGPT, Codex, Cursor, Gemini CLI or OpenClaw to Wahlu, and your agent can plan posts, prepare drafts, check they're ready and schedule them to **Instagram, Facebook, TikTok, YouTube, LinkedIn** personal profiles and **X**. Schedules are held for your review by default, so nothing publishes until you approve it.
 
 This repository holds the connect guides, example prompts, a portable ChatGPT/Codex plugin with Claude compatibility and six skills, and the OpenClaw skill. Everything here is Markdown and JSON; there's no code to build or run.
 
@@ -47,7 +47,7 @@ Install it in Claude Code:
 
 Then run `/mcp`, select **wahlu** and sign in.
 
-The 0.4.0 package describes 37 hosted tools, 38 generic tools and 39 local stdio tools, with six workflows. The local 0.13.0 package is not yet npm-published; `npx` installs the current published version and may expose an older inventory. Use the actual connected tool schema and preserve permission refusals. Source publication and local validation do not establish authenticated ChatGPT/Claude execution or a directory listing.
+The 0.4.1 package describes 37 hosted tools, 38 generic tools and 39 local stdio tools, with six workflows, and adds X to every platform list. `npx -y @wahlu/mcp-server` installs the published 0.14.0 local server, which supports X. Use the actual connected tool schema and preserve permission refusals. Source publication and local validation do not establish authenticated ChatGPT/Claude execution or a directory listing.
 
 ## Example prompts
 
