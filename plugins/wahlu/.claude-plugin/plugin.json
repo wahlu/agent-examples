@@ -1,7 +1,7 @@
 {
 	"name": "wahlu",
 	"displayName": "Wahlu",
-	"version": "0.4.1",
+	"version": "0.4.2",
 	"description": "Plan, draft, review and schedule social posts with Wahlu. Manage unused drafts and held schedules, review Autopilot ideas, and recap your calendar with publishing under your control.",
 	"author": {
 		"name": "Wahlu",
@@ -20,6 +20,7 @@
 		"youtube",
 		"facebook",
 		"x",
+		"bluesky",
 		"mcp"
 	]
 }

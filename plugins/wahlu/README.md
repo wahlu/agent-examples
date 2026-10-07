@@ -1,6 +1,6 @@
 # Wahlu for ChatGPT, Codex and Claude
 
-Plan, draft, review and schedule social posts through your Wahlu account. Use your brand's voice, existing media and connected Instagram, Facebook Pages, TikTok, YouTube, LinkedIn personal and X accounts. New schedules are held for review by default. Publishing requires a separate permission and your explicit approval.
+Plan, draft, review and schedule social posts through your Wahlu account. Use your brand's voice, existing media and connected Instagram, Facebook Pages, TikTok, YouTube, LinkedIn personal, X and Bluesky accounts. New schedules are held for review by default. Publishing requires a separate permission and your explicit approval.
 
 ## Included workflows
 
@@ -24,7 +24,7 @@ The package includes the hosted HTTPS MCP configuration and both portable OpenAI
 
 ## Available tools
 
-Package 0.4.1 describes 37 hosted tools. A host may retain an older imported tool list until the connection is refreshed. Local stdio has 39 tools, with separate catalogue discovery and local-file upload; those two tools are not part of the hosted directory package. Package preparation does not certify actual host execution or directory submission.
+Package 0.4.2 describes 37 hosted tools. A host may retain an older imported tool list until the connection is refreshed. Local stdio has 39 tools, with separate catalogue discovery and local-file upload; those two tools are not part of the hosted directory package. Package preparation does not certify actual host execution or directory submission.
 
 | Area                  | Hosted tools                                                                                                                                                                                                                               |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |

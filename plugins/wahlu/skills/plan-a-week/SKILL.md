@@ -1,6 +1,6 @@
 ---
 name: plan-a-week
-description: Plan a week of social media posts for a Wahlu brand across Instagram, Facebook, TikTok, YouTube, LinkedIn and X, then save the approved ideas as Wahlu drafts. Use when someone asks to plan, map out or fill next week's content calendar with Wahlu.
+description: Plan a week of social media posts for a Wahlu brand across Instagram, Facebook, TikTok, YouTube, LinkedIn, X and Bluesky, then save the approved ideas as Wahlu drafts. Use when someone asks to plan, map out or fill next week's content calendar with Wahlu.
 ---
 
 # Plan a week of posts
@@ -25,6 +25,6 @@ Use the Wahlu MCP tools to propose seven days of posts that fit the brand's conn
 - Start read-only. Never create, schedule or publish without the person's clear go-ahead.
 - Reuse the same `idempotency_key` when retrying the same draft, so nothing is duplicated.
 - If a tool returns an authorisation or permission error, ask the person to reconnect Wahlu and check the brands and permissions they chose.
-- Wahlu publishes to Instagram, Facebook, TikTok, YouTube, LinkedIn personal profiles and X. Don't plan posts for other networks in Wahlu.
+- Wahlu publishes to Instagram, Facebook, TikTok, YouTube, LinkedIn personal profiles, X and Bluesky. Don't plan posts for other networks in Wahlu.
 - Facebook targets are Pages. Read current format and multi-photo limits from `get_platform_capabilities` and use only connected accounts marked schedulable.
 - Explain an entitlement refusal neutrally. Do not show subscription catalogues, prices, upgrade links or checkout. Planning in conversation does not create an Autopilot plan or change billing.
