@@ -1,13 +1,13 @@
 ---
 name: wahlu
-description: Social media scheduling for you and your AI agent. Plan, draft, check and schedule posts to Instagram, Facebook, TikTok, YouTube, LinkedIn, X and Bluesky with Wahlu, held for your review by default. Uses the Wahlu MCP server or the Wahlu CLI.
+description: Social media scheduling for you and your AI agent. Plan, draft, check and schedule posts to Instagram, Facebook, TikTok, YouTube, LinkedIn, X, Bluesky, Telegram, Discord and Tumblr with Wahlu, held for your review by default. Uses the Wahlu MCP server or the Wahlu CLI.
 homepage: https://wahlu.com/openclaw
 metadata: {"openclaw":{"emoji":"🐦","requires":{"env":["WAHLU_API_KEY"],"anyBins":["npx","wahlu"]},"homepage":"https://wahlu.com/openclaw","primaryEnv":"WAHLU_API_KEY","install":[{"id":"npm","kind":"node","pkg":"@wahlu/cli","bins":["wahlu"],"label":"Install the Wahlu CLI"}]}}
 ---
 
 # Wahlu: social media scheduling for you and your AI agent
 
-Wahlu holds a person's brands, media, drafts and publishing calendar for **Instagram, Facebook, TikTok, YouTube, LinkedIn personal profiles, X and Bluesky**. With this skill you can read that context, bring in media, save drafts, check they're ready and schedule them. Schedules are **held for review** by default: they sit in the Wahlu calendar and can't publish until a person approves them.
+Wahlu holds a person's brands, media, drafts and publishing calendar for **Instagram, Facebook, TikTok, YouTube, LinkedIn personal profiles, X, Bluesky, Telegram channels and groups, Discord servers and Tumblr blogs**. With this skill you can read that context, bring in media, save drafts, check they're ready and schedule them. Schedules are **held for review** by default: they sit in the Wahlu calendar and can't publish until a person approves them.
 
 - Website: [wahlu.com](https://wahlu.com)
 - Agent setup guide: [wahlu.com/connect.md](https://wahlu.com/connect.md)
@@ -59,6 +59,14 @@ For a text post on X, use `"x_settings": { "media_ids": [], "post_type": "X_TEXT
 
 For a text post on Bluesky, use `"bluesky_settings": { "media_ids": [], "post_type": "BSKY_TEXT" }`. Bluesky takes 300 characters, and up to 4 images (`BSKY_IMAGE`) or one video (`BSKY_VIDEO`); put alt text in `alt_text`, keyed by media ID. It needs CLI 0.8.0 or MCP server 0.15.0 or later.
 
+To post an X/Bluesky thread, add `"thread_parts": [{ "text": "Second post", "media_ids": [] }]` to `x_settings` or `bluesky_settings`: up to 24 more posts, each a reply to the one before, each within the network's limit (Bluesky parts also take `alt_text`). It needs CLI 0.9.0 or MCP server 0.16.0 or later.
+
+For a Telegram text message, use `"telegram_settings": { "media_ids": [], "post_type": "TG_TEXT" }`. Telegram takes 4,096 characters in a text message, or one photo or video, or an album of 2 to 10, with a caption of up to 1,024 characters (`TG_MEDIA`). `disable_link_preview` hides the link preview and `silent` sends without a sound.
+
+For a Discord message, use `"discord_settings": { "media_ids": [], "post_type": "DISCORD_TEXT" }`. Discord takes 2,000 characters, and up to 10 images or videos (`DISCORD_MEDIA`). `publish_to_followers` also sends a message in an announcement channel to the servers that follow it.
+
+For a Tumblr text post, use `"tumblr_settings": { "media_ids": [], "post_type": "TUMBLR_TEXT" }`. Tumblr takes 1 to 10 images (`TUMBLR_IMAGE`) or one video (`TUMBLR_VIDEO`), with an optional `title`, `link`, `tags` (without the #) and `alt_text` keyed by media ID. Telegram, Discord and Tumblr need CLI 0.9.0 or MCP server 0.16.0 or later.
+
 Run `wahlu platforms capabilities --json` for every platform's post types and settings.
 
 ## Examples
@@ -75,4 +83,4 @@ Run `wahlu platforms capabilities --json` for every platform's post types and se
 - Reuse the same `idempotency_key` when retrying the same request, so nothing is duplicated.
 - Read media and schedule status once per request; don't write polling loops.
 - Connecting social accounts, approving held schedules, editing existing drafts and managing queues happen in the Wahlu app. Tell the person when they need to go there.
-- Wahlu publishes to Instagram, Facebook, TikTok, YouTube, LinkedIn personal profiles, X and Bluesky only.
+- Wahlu publishes to Instagram, Facebook, TikTok, YouTube, LinkedIn personal profiles, X, Bluesky, Telegram, Discord and Tumblr only.

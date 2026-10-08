@@ -1,6 +1,6 @@
 # Wahlu for ChatGPT, Codex and Claude
 
-Plan, draft, review and schedule social posts through your Wahlu account. Use your brand's voice, existing media and connected Instagram, Facebook Pages, TikTok, YouTube, LinkedIn personal, X and Bluesky accounts. New schedules are held for review by default. Publishing requires a separate permission and your explicit approval.
+Plan, draft, review and schedule social posts through your Wahlu account. Use your brand's voice, existing media and connected Instagram, Facebook Pages, TikTok, YouTube, LinkedIn personal, X, Bluesky, Telegram, Discord and Tumblr accounts. New schedules are held for review by default. Publishing requires a separate permission and your explicit approval.
 
 ## Included workflows
 
@@ -24,7 +24,7 @@ The package includes the hosted HTTPS MCP configuration and both portable OpenAI
 
 ## Available tools
 
-Package 0.4.2 describes 37 hosted tools. A host may retain an older imported tool list until the connection is refreshed. Local stdio has 39 tools, with separate catalogue discovery and local-file upload; those two tools are not part of the hosted directory package. Package preparation does not certify actual host execution or directory submission.
+Package 0.4.3 describes 38 hosted tools. A host may retain an older imported tool list until the connection is refreshed. Local stdio has 40 tools, with separate catalogue discovery and local-file upload; those two tools are not part of the hosted directory package. Package preparation does not certify actual host execution or directory submission.
 
 | Area                  | Hosted tools                                                                                                                                                                                                                               |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -46,7 +46,7 @@ History needs `publications:read`; notifications need `notifications:read`. Curr
 - Media uploads create private media; a URL import fetches the supplied public URL. Processing may continue after the call. A repair derivative preserves the source and requires an explicitly chosen repair option.
 - Unused draft and unsent schedule deletion require exact confirmation. Published social posts are not deleted by those tools. Provider cleanup needs separate exact receipt authority and permission.
 - Final schedule approval and rescheduling need `schedule:write` and `publish:execute` (Publishing). Approval requires an explicit decision about that post, accounts and time. New held schedules and cancellation need scheduling permission only. Permission refusals cannot be bypassed by creating an approved replacement.
-- Text-topic regeneration requires an eligible plan and may use AI credits. Wahlu's agent tools do not generate Studio images, videos or audio.
+- Text-topic regeneration requires an eligible plan and may use credits. Wahlu's agent tools do not generate Studio images, videos or audio.
 - Revoke this connection at [Connected agents](https://auth.wahlu.com/connections). Connect social accounts, configure queues or automations, view social Insights, edit Link in bio, manage billing and membership, or delete your account in the [Wahlu app](https://app.wahlu.com). Administrator controls and native-app distribution are outside this plugin.
 
 ## Support

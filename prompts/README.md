@@ -68,7 +68,7 @@ Tools: `list_drafts`, `get_content_item`, `update_draft` with matching exact con
 
 > Read week 1 of my Autopilot plan PLAN_ID. Show the unused ideas and replace only the one I choose with a coffee-brewing topic. Show the new topic before I approve it; don't generate or publish posts.
 
-Tools: `get_autopilot_week`, then `regenerate_autopilot_item` for an explicitly chosen unused idea and a new week read. Skill: `review-autopilot`. Replace PLAN_ID with the actual existing plan. Regeneration requires an eligible paid plan and may use AI credits.
+Tools: `get_autopilot_week`, then `regenerate_autopilot_item` for an explicitly chosen unused idea and a new week read. Skill: `review-autopilot`. Replace PLAN_ID with the actual existing plan. Regeneration requires an eligible paid plan and may use credits.
 
 ## Upload from your computer (local server only)
 

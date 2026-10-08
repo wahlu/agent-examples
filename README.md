@@ -47,7 +47,7 @@ Install it in Claude Code:
 
 Then run `/mcp`, select **wahlu** and sign in.
 
-The 0.4.2 package describes 37 hosted tools, 38 generic tools and 39 local stdio tools, with six workflows, and adds Bluesky to every platform list. `npx -y @wahlu/mcp-server` installs the published 0.15.0 local server, which supports X and Bluesky. Use the actual connected tool schema and preserve permission refusals. Source publication and local validation do not establish authenticated ChatGPT/Claude execution or a directory listing.
+The 0.4.3 package describes 38 hosted tools, 39 generic tools and 40 local stdio tools, with six workflows. It adds Telegram, Discord, Tumblr, X/Bluesky threads and Autopilot's lines to check (`resolve_autopilot_fact_flag`). `npx -y @wahlu/mcp-server` installs the published 0.16.0 local server, which supports X, Bluesky, Telegram, Discord, Tumblr and X/Bluesky threads. Use the actual connected tool schema and preserve permission refusals. Source publication and local validation do not establish authenticated ChatGPT/Claude execution or a directory listing.
 
 ## Example prompts
 
