@@ -9,8 +9,8 @@
 		{
 			"name": "wahlu",
 			"source": "./plugins/wahlu",
-			"description": "Plan, draft and schedule social posts to Instagram, Facebook, TikTok, YouTube, LinkedIn, X, Bluesky, Telegram, Discord and Tumblr from Claude, held for your review by default.",
-			"version": "0.4.3"
+			"description": "Plan, draft and schedule social posts to Instagram, Facebook, TikTok, YouTube, LinkedIn, X, Bluesky, Telegram, Discord, Tumblr and Pinterest from Claude, held for your review by default.",
+			"version": "0.4.4"
 		}
 	]
 }

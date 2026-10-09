@@ -47,7 +47,7 @@ Install it in Claude Code:
 
 Then run `/mcp`, select **wahlu** and sign in.
 
-The 0.4.3 package describes 38 hosted tools, 39 generic tools and 40 local stdio tools, with six workflows. It adds Telegram, Discord, Tumblr, X/Bluesky threads and Autopilot's lines to check (`resolve_autopilot_fact_flag`). `npx -y @wahlu/mcp-server` installs the published 0.16.0 local server, which supports X, Bluesky, Telegram, Discord, Tumblr and X/Bluesky threads. Use the actual connected tool schema and preserve permission refusals. Source publication and local validation do not establish authenticated ChatGPT/Claude execution or a directory listing.
+The 0.4.4 package describes 38 hosted tools, 39 generic tools and 40 local stdio tools, with six workflows. It adds Pinterest, including listing an account's boards. `npx -y @wahlu/mcp-server` installs the published 0.17.0 local server, which supports X, Bluesky, Telegram, Discord, Tumblr, Pinterest and X/Bluesky threads. Use the actual connected tool schema and preserve permission refusals. Source publication and local validation do not establish authenticated ChatGPT/Claude execution or a directory listing.
 
 ## Example prompts
 

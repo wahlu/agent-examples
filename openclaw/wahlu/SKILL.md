@@ -1,13 +1,13 @@
 ---
 name: wahlu
-description: Social media scheduling for you and your AI agent. Plan, draft, check and schedule posts to Instagram, Facebook, TikTok, YouTube, LinkedIn, X, Bluesky, Telegram, Discord and Tumblr with Wahlu, held for your review by default. Uses the Wahlu MCP server or the Wahlu CLI.
+description: Social media scheduling for you and your AI agent. Plan, draft, check and schedule posts to Instagram, Facebook, TikTok, YouTube, LinkedIn, X, Bluesky, Telegram, Discord, Tumblr and Pinterest with Wahlu, held for your review by default. Uses the Wahlu MCP server or the Wahlu CLI.
 homepage: https://wahlu.com/openclaw
 metadata: {"openclaw":{"emoji":"🐦","requires":{"env":["WAHLU_API_KEY"],"anyBins":["npx","wahlu"]},"homepage":"https://wahlu.com/openclaw","primaryEnv":"WAHLU_API_KEY","install":[{"id":"npm","kind":"node","pkg":"@wahlu/cli","bins":["wahlu"],"label":"Install the Wahlu CLI"}]}}
 ---
 
 # Wahlu: social media scheduling for you and your AI agent
 
-Wahlu holds a person's brands, media, drafts and publishing calendar for **Instagram, Facebook, TikTok, YouTube, LinkedIn personal profiles, X, Bluesky, Telegram channels and groups, Discord servers and Tumblr blogs**. With this skill you can read that context, bring in media, save drafts, check they're ready and schedule them. Schedules are **held for review** by default: they sit in the Wahlu calendar and can't publish until a person approves them.
+Wahlu holds a person's brands, media, drafts and publishing calendar for **Instagram, Facebook, TikTok, YouTube, LinkedIn personal profiles, X, Bluesky, Telegram channels and groups, Discord servers, Tumblr blogs and Pinterest business accounts**. With this skill you can read that context, bring in media, save drafts, check they're ready and schedule them. Schedules are **held for review** by default: they sit in the Wahlu calendar and can't publish until a person approves them.
 
 - Website: [wahlu.com](https://wahlu.com)
 - Agent setup guide: [wahlu.com/connect.md](https://wahlu.com/connect.md)
@@ -67,6 +67,8 @@ For a Discord message, use `"discord_settings": { "media_ids": [], "post_type": 
 
 For a Tumblr text post, use `"tumblr_settings": { "media_ids": [], "post_type": "TUMBLR_TEXT" }`. Tumblr takes 1 to 10 images (`TUMBLR_IMAGE`) or one video (`TUMBLR_VIDEO`), with an optional `title`, `link`, `tags` (without the #) and `alt_text` keyed by media ID. Telegram, Discord and Tumblr need CLI 0.9.0 or MCP server 0.16.0 or later.
 
+For a Pinterest image Pin, use `"pinterest_settings": { "media_ids": ["MEDIA_ID"], "post_type": "PIN_IMAGE", "board_id": "BOARD_ID" }`. Every Pin needs an image (1 to 5, PNG or JPEG; 2 or more make a carousel) or one video (`PIN_VIDEO`), and a board: list the account's boards with `wahlu targets options --brand BRAND_ID --integration INTEGRATION_ID --json` (or the MCP tool `refresh_target_dynamic_options`) and ask the person which to use. Optional `title` (100 characters), `link` (https://) and `alt_text`; the caption is the description (800 characters). Pinterest asks that a person chooses each Pin, so confirm every Pin. It needs CLI 0.10.0 or MCP server 0.17.0 or later.
+
 Run `wahlu platforms capabilities --json` for every platform's post types and settings.
 
 ## Examples
@@ -83,4 +85,4 @@ Run `wahlu platforms capabilities --json` for every platform's post types and se
 - Reuse the same `idempotency_key` when retrying the same request, so nothing is duplicated.
 - Read media and schedule status once per request; don't write polling loops.
 - Connecting social accounts, approving held schedules, editing existing drafts and managing queues happen in the Wahlu app. Tell the person when they need to go there.
-- Wahlu publishes to Instagram, Facebook, TikTok, YouTube, LinkedIn personal profiles, X, Bluesky, Telegram, Discord and Tumblr only.
+- Wahlu publishes to Instagram, Facebook, TikTok, YouTube, LinkedIn personal profiles, X, Bluesky, Telegram, Discord, Tumblr and Pinterest only.

@@ -1,6 +1,6 @@
 {
 	"name": "wahlu",
-	"version": "0.4.3",
+	"version": "0.4.4",
 	"description": "Plan, draft, review and schedule social posts with Wahlu. Manage unused drafts and held schedules, review Autopilot ideas, and recap your calendar with publishing under your control.",
 	"author": {
 		"name": "Wahlu",
@@ -23,6 +23,7 @@
 		"telegram",
 		"discord",
 		"tumblr",
+		"pinterest",
 		"mcp"
 	],
 	"$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
@@ -31,7 +32,7 @@
 			"interface": {
 				"displayName": "Wahlu",
 				"shortDescription": "Plan and manage social posts",
-				"longDescription": "Wahlu connects your social content workflows to ChatGPT and Codex. Choose a workspace, brands and permissions through Wahlu OAuth. Plan posts in your brand's voice for Instagram, Facebook Pages, TikTok, YouTube, LinkedIn personal profiles, X, Bluesky, Telegram, Discord and Tumblr. Read current format rules and account health, bring in images or videos, browse media across pages, check readiness and save labelled drafts. Multi-photo posts use each platform's current media limits.\n\nManage unused draft names and shared captions, delete an exact unused draft, create held schedules, inspect the calendar and publishing outcomes, reschedule or cancel unsent posts, and return unsent schedules to Drafts or delete them. Approving a held schedule requires explicit approval and the separate Publishing permission; new schedules are held for review by default.\n\nRead brand voice, strategy and brand kit, existing labels, Link in bio pages and their views and clicks, and the current Autopilot plan with its available weeks. On eligible plans, approve or regenerate an unused Autopilot text idea. Agent-approved ideas keep resulting schedules held for final approval. History with public post links and user-visible notifications require their separate connection scopes. Explain unavailable features without changing billing.\n\nUse the Wahlu app to connect social accounts, configure queues, edit Link in bio, set up Instagram reply automations, see social engagement Insights, manage workspace membership or billing, and delete your account. The plugin does not expose administrator controls or Studio image, video or audio generation.",
+				"longDescription": "Wahlu connects your social content workflows to ChatGPT and Codex. Choose a workspace, brands and permissions through Wahlu OAuth. Plan posts in your brand's voice for Instagram, Facebook Pages, TikTok, YouTube, LinkedIn personal profiles, X, Bluesky, Telegram, Discord, Tumblr and Pinterest. Read current format rules and account health, bring in images or videos, browse media across pages, check readiness and save labelled drafts. Multi-photo posts use each platform's current media limits.\n\nManage unused draft names and shared captions, delete an exact unused draft, create held schedules, inspect the calendar and publishing outcomes, reschedule or cancel unsent posts, and return unsent schedules to Drafts or delete them. Approving a held schedule requires explicit approval and the separate Publishing permission; new schedules are held for review by default.\n\nRead brand voice, strategy and brand kit, existing labels, Link in bio pages and their views and clicks, and the current Autopilot plan with its available weeks. On eligible plans, approve or regenerate an unused Autopilot text idea. Agent-approved ideas keep resulting schedules held for final approval. History with public post links and user-visible notifications require their separate connection scopes. Explain unavailable features without changing billing.\n\nUse the Wahlu app to connect social accounts, configure queues, edit Link in bio, set up Instagram reply automations, see social engagement Insights, manage workspace membership or billing, and delete your account. The plugin does not expose administrator controls or Studio image, video or audio generation.",
 				"developerName": "Wahlu",
 				"category": "Productivity",
 				"capabilities": ["Read", "Write"],
