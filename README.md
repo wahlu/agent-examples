@@ -1,6 +1,6 @@
 # Wahlu agent examples
 
-Wahlu is social media scheduling for you and your AI agent. Connect Claude, ChatGPT, Codex, Cursor, Gemini CLI or OpenClaw to Wahlu, and your agent can plan posts, prepare drafts, check they're ready and schedule them to **Instagram, Facebook, TikTok, YouTube, LinkedIn** personal profiles and **X**. Schedules are held for your review by default, so nothing publishes until you approve it.
+Wahlu is social media scheduling for you and your AI agent. Connect Claude, ChatGPT, Codex, Cursor, Gemini CLI or OpenClaw to Wahlu, and your agent can plan posts, prepare drafts, check they're ready and schedule them to **Instagram, Facebook Pages, TikTok, YouTube, LinkedIn** personal profiles, **Threads, X, Bluesky, Telegram, Discord, Tumblr** and **Pinterest**. Posts wait for your approval unless you give your AI the Publishing permission.
 
 This repository holds the connect guides, example prompts, a portable ChatGPT/Codex plugin with Claude compatibility and six skills, and the OpenClaw skill. Everything here is Markdown and JSON; there's no code to build or run.
 
@@ -47,7 +47,7 @@ Install it in Claude Code:
 
 Then run `/mcp`, select **wahlu** and sign in.
 
-The 0.4.4 package describes 38 hosted tools, 39 generic tools and 40 local stdio tools, with six workflows. It adds Pinterest, including listing an account's boards. `npx -y @wahlu/mcp-server` installs the published 0.17.0 local server, which supports X, Bluesky, Telegram, Discord, Tumblr, Pinterest and X/Bluesky threads. Use the actual connected tool schema and preserve permission refusals. Source publication and local validation do not establish authenticated ChatGPT/Claude execution or a directory listing.
+The 0.4.6 package describes 38 hosted tools, 39 generic tools and 40 local stdio tools, with six workflows. It adds Meta's Threads app, with who can reply, a topic tag, more parts and a follow-up reply. `npx -y @wahlu/mcp-server` installs the published 0.18.0 local server, which supports X, Bluesky, Telegram, Discord, Tumblr, Pinterest, Threads and X/Bluesky threads. Use the actual connected tool schema and preserve permission refusals. Source publication and local validation do not establish authenticated ChatGPT/Claude execution or a directory listing. 0.4.6 changes wording and test prompts only: posts wait for your approval unless the connection has the Publishing permission, and the example test prompts use relative dates.
 
 ## Example prompts
 
@@ -68,7 +68,7 @@ Connecting social accounts, queue configuration, Insights, reply automations, Li
 ## Safety
 
 - You choose the workspace, brands and permissions at sign-in, and can untick any permission.
-- Scheduling and publishing are separate permissions. Held schedules can't publish until someone approves them in Wahlu.
+- Scheduling and publishing are separate permissions. Without Publishing, posts wait for your approval in Wahlu and can't go out until someone approves them there.
 - Revoke access at [auth.wahlu.com/connections](https://auth.wahlu.com/connections).
 
 ## Links

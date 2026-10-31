@@ -2,7 +2,7 @@
 
 These prompts work in any client connected to Wahlu (Claude, ChatGPT, Codex, Cursor, Gemini CLI or OpenClaw). They're illustrations, not recorded conversations: your agent's wording will differ, but the Wahlu tools it calls should match.
 
-Every workflow starts by reading, and schedules are **held for review** unless you say otherwise. A held schedule sits in your Wahlu calendar and cannot publish until you approve it there, or explicitly approve that exact schedule through an agent connection with Publishing permission.
+Every workflow starts by reading, and these prompts ask for schedules to be **held for review** unless you say otherwise. A held schedule sits in your Wahlu calendar and cannot publish until you approve it there, or explicitly approve that exact schedule through an agent connection with Publishing permission.
 
 ## First connection
 

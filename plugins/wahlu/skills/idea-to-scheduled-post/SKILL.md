@@ -5,13 +5,13 @@ description: Turn an idea, article link or image into a platform-ready social po
 
 # Idea to scheduled post
 
-Take one idea from conversation to a Wahlu schedule. By default the schedule is **held for review**: it sits in the Wahlu calendar and can't publish until a person approves it there.
+Take one idea from conversation to a Wahlu schedule. This skill asks for the schedule to be **held for review**: it sits in the Wahlu calendar and can't publish until a person approves it there. Only a connection with the Publishing permission can release it, and only when the person asks.
 
 ## Steps
 
 1. **Pick the brand.** Call `get_context`. If there's more than one brand, ask which one. Call `get_brand_context` and write the copy in the brand's voice, following its custom instructions and default call to action.
 2. **Pick the accounts.** Call `list_targets` for the brand and confirm which connected accounts the post should go to. Only use accounts marked schedulable.
-3. **Check the format.** Call `get_platform_capabilities` and choose a supported post type and media count for each account. Multi-photo posts are supported on Instagram, TikTok, Facebook Pages, LinkedIn personal profiles, X and Bluesky (up to 4 images each), Telegram, Discord and Tumblr (up to 10 each), Pinterest (up to 5, as a carousel); use the current returned rules rather than copying one platform's limit to another. Facebook Reels and Stories still use one item.
+3. **Check the format.** Call `get_platform_capabilities` and choose a supported post type and media count for each account. Multi-photo posts are supported on Instagram, TikTok, Facebook Pages, LinkedIn personal profiles, X and Bluesky (up to 4 images each), Telegram, Discord and Tumblr (up to 10 each), Pinterest (up to 5, as a carousel), Threads (2 to 20, as a carousel); use the current returned rules rather than copying one platform's limit to another. Facebook Reels and Stories still use one item.
 4. **Get the media into Wahlu.**
    - A public image or video URL: call `import_media_from_url` with a stable `idempotency_key`.
    - A file you hold as data: call `upload_media` (small files inline, larger ones through the returned upload URL).
